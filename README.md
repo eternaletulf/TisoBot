@@ -7,7 +7,7 @@ Bueno chat
 Mira, si queri correr el bot teni que hacer 
 
 ```bash
-WIP
+pipenv run python bot.py
 ```
 
 ## Que es lo que hago?
