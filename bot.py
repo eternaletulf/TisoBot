@@ -15,7 +15,7 @@ async def event_ready():
     'Called once when the bot goes online.'
     print(f"{os.environ['BOT_NICK']} is online!")
     ws = bot._ws  # this is only needed to send messages within event_ready
-    await ws.send_privmsg(os.environ['CHANNEL'], f"/me has landed!")
+    await ws.send_privmsg(os.environ['CHANNEL'], f"/me has landed!, !bueno en el chat")
 
 
 @bot.event
@@ -32,13 +32,21 @@ async def event_message(ctx):
 
     if 'hello' in ctx.content.lower():
         await ctx.channel.send(f"Hi, @{ctx.author.name}!")
+susto_counter = 0
+
+def increment():
+    global susto_counter
+    susto_counter = susto_counter+1
 
 
-@bot.command(name='bueno')
+
+
+
+@bot.command(name='susto')
 async def test(ctx):
-    await ctx.send('bueno chat')
+    increment()
+    await ctx.send('llevamos ' + str(susto_counter) + ' sustos')
 
 
 if __name__ == "__main__":
-    print('voy')
     bot.run()
